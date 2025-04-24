@@ -1,0 +1,56 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Trigger the workflow every time you push to the `main` branch
+  # Using a different branch name? Replace `main` with your branch's name
+  push:
+    branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab on GitHub
+  workflow_dispatch:
+
+# Allow this job to clone the repo and create a page deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+      
+      # Setup PNPM
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8 # Specify PNPM version if needed, or omit for latest compatible
+
+      # Setup Node.js based on PNPM lockfile
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc' # Or specify a version like '20' if no .nvmrc
+          cache: 'pnpm'
+
+      # Install dependencies, build, and upload site
+      # Uses the official Astro action: https://github.com/withastro/action
+      - name: Install, build, and upload your site
+        uses: withastro/action@v3
+        # If you need to specify a different Node.js version, package manager, etc.
+        # See https://github.com/withastro/action#inputs
+        # with:
+          # node-version: 20 # Example
+          # package-manager: pnpm@latest # Example: Explicitly set PNPM
+
+deploy:
+  needs: build
+  runs-on: ubuntu-latest
+  environment:
+    name: github-pages
+    url: ${{ steps.deployment.outputs.page_url }}
+  steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
