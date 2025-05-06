@@ -83,19 +83,19 @@ const posts = (await getCollection("blog")).sort(
         padding: 0;
         list-style: none;
       }
-      .posts-list li {
-        margin-bottom: 1.7rem;
-      }
-      .posts-list a {
+      a {
         color: #ff6363;
         text-decoration: none;
-        font-size: 1.16rem;
-        font-weight: 500;
         transition: color 0.2s;
       }
-      .posts-list a:hover {
-        color: #fff;
+      a:hover,
+      a:focus {
+        color: #ffb347;
         text-decoration: underline;
+      }
+      .posts-list a {
+        font-size: 1.16rem;
+        font-weight: 500;
       }
       .posts-list .date {
         font-size: 0.98rem;
@@ -173,8 +173,8 @@ const posts = (await getCollection("blog")).sort(
         fan. I studied computer science with focus on computer graphics before
         working at two game studios. Found my true calling in startups, spending
         5 years at Represent where I built
-        <a href="https://separo.io">Separo</a>. Most recently, I spent 5 years
-        as a founding engineer at Deepnote.
+        <a href="https://separo.io">Separo</a>. After that, I spent 5 years as a
+        founding engineer at Deepnote.
       </div>
       <div class="intro">Here's some of my writing:</div>
       <ul class="posts-list">
