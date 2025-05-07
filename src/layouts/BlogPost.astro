@@ -1,8 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
@@ -11,76 +9,90 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: var(--text-color);
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: var(--text-color);
-				opacity: 0.8;
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
-	</head>
-
-	<body>
-		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
-					</div>
-					<slot />
-				</div>
-			</article>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
+      html, body {
+        background: #181818;
+        color: #f3f3f3;
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      main {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .prose {
+        width: 820px;
+        max-width: calc(100vw - 2em);
+        margin: 3rem auto 0 auto;
+        padding: 2.5rem 2rem 3rem 2rem;
+        background: #232323;
+        border-radius: 20px;
+        box-shadow: 0 2px 24px 0 #0008;
+      }
+      .hero-image {
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+      .hero-image img {
+        display: block;
+        margin: 0 auto;
+        border-radius: 16px;
+        box-shadow: 0 2px 24px 0 #0006;
+        max-width: 100%;
+        height: auto;
+      }
+      .post-title {
+        font-size: 2.7rem;
+        font-weight: 700;
+        margin: 0 0 1.1rem 0;
+        letter-spacing: -1px;
+        color: #fff;
+      }
+      .date {
+        font-size: 1.08rem;
+        color: #ff6363;
+        margin-bottom: 1.2rem;
+        margin-top: -0.5rem;
+        font-weight: 500;
+      }
+      a {
+        color: #ff6363;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      a:hover, a:focus {
+        color: #ffb347;
+        text-decoration: underline;
+      }
+      hr {
+        border: none;
+        border-top: 1px solid #444;
+        margin: 2.5rem 0 2rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article class="prose">
+        {heroImage && (
+          <div class="hero-image">
+            <img width={1020} height={510} src={heroImage} alt="" />
+          </div>
+        )}
+        <div class="date">
+          <FormattedDate date={pubDate} />
+          {updatedDate && (
+            <span style="font-size: 0.98em; color: #aaa; font-style: italic; margin-left: 1em;">(Updated <FormattedDate date={updatedDate} />)</span>
+          )}
+        </div>
+        <h1 class="post-title">{title}</h1>
+        <hr />
+        <slot />
+      </article>
+    </main>
+  </body>
 </html>
