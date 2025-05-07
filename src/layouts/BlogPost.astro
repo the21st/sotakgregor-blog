@@ -12,9 +12,25 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
   <head>
     <BaseHead title={title} description={description} />
     <style>
+      :root {
+        --bg: #181818;
+        --bg-alt: #232323;
+        --text: #f3f3f3;
+        --accent: #ff6363;
+        --accent-hover: #ffb347;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #fff;
+          --bg-alt: #f6f6f6;
+          --text: #232323;
+          --accent: #e14b1e;
+          --accent-hover: #e8a94b;
+        }
+      }
       html, body {
-        background: #181818;
-        color: #f3f3f3;
+        background: var(--bg);
+        color: var(--text);
         font-family: 'Inter', sans-serif;
         margin: 0;
         padding: 0;

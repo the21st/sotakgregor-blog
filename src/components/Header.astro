@@ -38,8 +38,8 @@ import { SITE_TITLE } from "../consts";
   header {
     margin: 0;
     padding: 0 1em;
-    background: var(--nav-bg);
-    box-shadow: var(--box-shadow);
+    background: var(--bg-alt);
+    box-shadow: 0 2px 24px 0 #0003;
   }
   h2 {
     margin: 0;
@@ -68,13 +68,14 @@ import { SITE_TITLE } from "../consts";
   }
   nav a {
     padding: 1em 0.5em;
-    color: var(--heading-color);
+    color: var(--accent);
     border-bottom: 4px solid transparent;
     text-decoration: none;
+    transition: color 0.2s;
   }
   nav a.active {
     text-decoration: none;
-    border-bottom-color: var(--accent);
+    border-bottom-color: var(--accent-hover);
   }
   .social-links,
   .social-links a {

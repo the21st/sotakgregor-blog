@@ -28,10 +28,10 @@ const today = new Date();
 <style>
   footer {
     padding: 2em 1em 6em 1em;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--bg-alt);
+    color: var(--text);
     text-align: center;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid #333;
   }
   .social-links {
     display: flex;
@@ -41,11 +41,12 @@ const today = new Date();
   }
   .social-links a {
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--accent);
     opacity: 0.8;
+    transition: color 0.2s;
   }
   .social-links a:hover {
-    color: var(--accent);
+    color: var(--accent-hover);
     opacity: 1;
   }
 </style>
