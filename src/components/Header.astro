@@ -6,7 +6,15 @@ const AVATAR_SRC = "/saturn.png";
 <header class="page-header">
   <div class="header-main">
     <div class="header-text">
-      <h1 class="site-title">Šimon Soták Gregor</h1>
+      {
+        Astro.props.homeLink ? (
+          <h1 class="site-title">
+            <a href="/">Šimon Soták Gregor</a>
+          </h1>
+        ) : (
+          <h1 class="site-title">Šimon Soták Gregor</h1>
+        )
+      }
       <div class="social">
         <a
           href="https://github.com/the21st  "
@@ -75,11 +83,22 @@ const AVATAR_SRC = "/saturn.png";
   }
   .site-title {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 100;
     margin: 0;
     letter-spacing: -1px;
     color: var(--text);
     line-height: 1.1;
+  }
+  .site-title a {
+    color: var(--text);
+    text-decoration: none;
+    transition: none;
+  }
+  .site-title a:hover,
+  .site-title a:focus {
+    color: var(--text);
+    text-decoration: underline;
+    cursor: pointer;
   }
   .social {
     display: flex;
