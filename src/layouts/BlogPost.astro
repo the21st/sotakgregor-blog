@@ -45,7 +45,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         max-width: calc(100vw - 2em);
         margin: 3rem auto 0 auto;
         padding: 2.5rem 2rem 3rem 2rem;
-        background: #232323;
+        background: var(--bg-alt);
         border-radius: 20px;
         box-shadow: 0 2px 24px 0 #0008;
       }
@@ -66,7 +66,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         font-weight: 700;
         margin: 0 0 1.1rem 0;
         letter-spacing: -1px;
-        color: #fff;
+        color: var(--text);
       }
       .date {
         font-size: 1.08rem;
@@ -81,7 +81,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         transition: color 0.2s;
       }
       a:hover, a:focus {
-        color: #ffb347;
+        color: var(--accent-hover);
         text-decoration: underline;
       }
       hr {

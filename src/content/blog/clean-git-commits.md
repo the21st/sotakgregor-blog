@@ -1,10 +1,8 @@
 ---
 title: "Clean PR commit history – why?"
 description: "Clean PR commit history – why?"
-pubDate: "2025-04-27"
+pubDate: "2025-05-07"
 ---
-
-# The Value of a Clean Git Commit History
 
 A clean git commit history isn't about neatness or vanity. It's a tool that improves code reviews and the long-term maintainability of a project. The methods to achieve a clean history can be complex, but here I want to focus on _why_ a clean history within a PR matters.
 
