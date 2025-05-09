@@ -34,6 +34,6 @@ I used to prefer reviewing all changes in a pull request as one large diff; it f
 
 If your entire pull request addresses one small, logical change, then yes, it makes sense to squash any intermediate "work-in-progress" commits into a single, clear commit before requesting a review. There's little value in making reviewers trace tiny, incremental steps if the outcome is one self-contained update.
 
-## Clean commits: not a nice-to-have, it's how to move fast
+## Clean commits: it's how to move fast
 
-That urge to just push and move on? We all feel it. But let's be brutally honest: claiming 'no time' for clean commits is often a false economy. You're not saving time; you're deferring it, with interest, onto your reviewers and your future self. Don't just write code: write a narrative.
+That urge to just push and move on. We all feel it. But let's be brutally honest: claiming 'no time' for clean commits is often a false economy. You're not saving time; you're deferring it, with interest, onto your reviewers and your future self. Don't just write code: write a narrative.
