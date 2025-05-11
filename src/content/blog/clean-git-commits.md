@@ -8,13 +8,13 @@ A clean git commit history isn't about neatness or vanity. Clean commits are a t
 
 ## If it's so good, why don't we always do it?
 
-Let's be honest. If clean commits are so obviously beneficial, why aren't our git logs always clean? Often, it's time pressure. We're rushing to get a feature out, scrambling to fix a bug. It feels faster to just `git commit -am "fix tests"` and push. That immediate sense of "done" is tempting. Tidying up commits can seem like an unnecessary step. But this shortcut often creates more work and confusion for the team down the line.
+If clean commits are so obviously beneficial, why aren't our git logs always clean? Building a PR with clean commits is hard work. It took me a long time and effort to learn how to do it, and then even more time to do it efficiently and make a habit of it. It's much simpler to just `git commit -am "fix tests"` and push. It feels good to be done with a pull request when all the code is there, and and tidying up can feel unnecessary. But not cleaning up often creates more work and confusion for the team down the line.
 
 ## Better code reviews
 
 A clean commit history simplifies reviews of large pull requests. A lot. When commits are well-scoped and logically organized, reviewers can grasp your changes quickly and provide more useful feedback.
 
-When each commit represents a single conceptual change, reviewers can follow the thinking behind your solution. Consider the difference: A reviewer faced with one large initial WIP commit and several subsequent smaller "fixes" and "improvements" commits has to untangle various unrelated changes. A bug fix here, a new UI element there, some refactoring mixed in. It's hard to know where to begin.
+When each commit is a single conceptual change, reviewers can follow the thinking behind your solution. Consider the difference: A reviewer faced with one large initial WIP commit and several subsequent smaller "fixes" and "improvements" commits has to reason about various unrelated changes. It's hard to know where to begin.
 
 Now, imagine that same set of changes presented as a sequence of focused commits: first, perhaps, a commit that refactors a specific module to prepare for new functionality. Then a commit that introduces a new data structure. Finally, a commit that adds the new feature, building on the earlier refactoring and data prep. Each step is clear. The reviewer isn't struggling to decode a jumble of edits; they're following a coherent story of development.
 
@@ -28,12 +28,12 @@ _Good commits that explain themselves make it much more likely for you to get a 
 
 ## Reviewing the whole diff? You're missing out
 
-I used to prefer reviewing all changes in a pull request as one large diff; it felt straightforward and it was a way to avoid seeing the messy evolution of a PR. That changed when I started seeing PRs built from a series of clean, logical commits. The difference was immediate: it was far easier to follow the developer's reasoning, which in turn helped me give better feedback and complete reviews more quickly.
+I used to prefer reviewing all changes in a pull request as one large diff; it felt straightforward and it was a way to avoid seeing the messy evolution of a pull request. That changed when I started seeing large pull requests built from a series of clean commits. The difference was immediate: it was far easier to follow the developer's reasoning, which in turn helped me give better feedback and complete reviews more quickly.
 
 ## What about small pull requests?
 
-If your entire pull request addresses one small, logical change, then yes, it makes sense to squash any intermediate "work-in-progress" commits into a single, clear commit before requesting a review. There's little value in making reviewers trace tiny, incremental steps if the outcome is one self-contained update.
+If your entire pull request addresses one small, logical change, then it makes sense to squash any intermediate "work-in-progress" commits into a single, clear commit before requesting a review. There's little value in making reviewers trace tiny, incremental steps if the outcome is one self-contained update.
 
 ## Clean commits: it's how to move fast
 
-That urge to just push and move on. We all feel it. But let's be brutally honest: claiming 'no time' for clean commits is often a false economy. You're not saving time; you're deferring it, with interest, onto your reviewers and your future self. Don't just write code: write a narrative.
+Claiming 'no time' for clean commits is often a false economy. You're not saving time – you're deferring it, with interest, onto your reviewers. Don't just write code, write a narrative.
