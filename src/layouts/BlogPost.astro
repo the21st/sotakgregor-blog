@@ -17,8 +17,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         --bg: #181818;
         --bg-alt: #232323;
         --text: #f3f3f3;
-        --accent: #ff6363;
-        --accent-hover: #ffb347;
+        --accent: #e14b1e;
       }
       @media (prefers-color-scheme: light) {
         :root {
@@ -26,7 +25,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
           --bg-alt: #f6f6f6;
           --text: #232323;
           --accent: #e14b1e;
-          --accent-hover: #e8a94b;
         }
       }
       html,
@@ -72,19 +70,18 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       }
       .date {
         font-size: 1.08rem;
-        color: #ff6363;
+        color: var(--accent);
         margin-bottom: 1.2rem;
         margin-top: -0.5rem;
         font-weight: 500;
       }
       a {
-        color: #ff6363;
+        color: var(--accent);
         text-decoration: none;
         transition: color 0.2s;
       }
       a:hover,
       a:focus {
-        color: var(--accent-hover);
         text-decoration: underline;
       }
       hr {

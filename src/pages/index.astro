@@ -19,7 +19,7 @@ const posts = (await getCollection("blog")).sort(
         --bg: #181818;
         --bg-alt: #232323;
         --text: #f3f3f3;
-        --accent: #ff6363;
+        --accent: #e14b1e;
       }
       @media (prefers-color-scheme: light) {
         :root {
@@ -103,7 +103,7 @@ const posts = (await getCollection("blog")).sort(
         list-style: none;
       }
       a {
-        color: #ff6363;
+        color: var(--accent);
         text-decoration: none;
         transition: color 0.2s;
       }
