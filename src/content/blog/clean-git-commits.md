@@ -6,6 +6,8 @@ pubDate: "2025-05-07"
 
 A clean git commit history isn't about neatness or vanity. Clean commits are a tool that leads to better and faster code reviews, and fewer WTF moments when you come back to old PRs. While mastering all the git tricks can take time, here I want to focus on _why_ a clean history within a pull request is so valuable, especially when you're trying to build things quickly.
 
+I'll write about how to keep your commits clean in an upcoming post.
+
 ## If it's so good, why don't we always do it?
 
 If clean commits are so obviously beneficial, why aren't our git logs always clean? Building a PR with clean commits is hard work. It took me a long time and effort to learn how to do it, and then even more time to do it efficiently and make a habit of it. It's much simpler to just `git commit -am "fix tests"` and push. It feels good to be done with a pull request when all the code is there, and and tidying up can feel unnecessary. But not cleaning up often creates more work and confusion for the team down the line.
