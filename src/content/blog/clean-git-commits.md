@@ -6,7 +6,29 @@ pubDate: "2025-05-07"
 
 A clean git commit history isn't about neatness or vanity. Clean commits are a tool that leads to better and faster code reviews, and fewer WTF moments when you come back to old PRs. While mastering all the git tricks can take time, here I want to focus on _why_ a clean history within a pull request is so valuable, especially when you're trying to build things quickly.
 
-I'll write about how to keep your commits clean in an upcoming post.
+I'll write about _how_ to keep your commits clean in an upcoming post.
+
+## Examples
+
+To set the stage, here's an example of commits in a clean PR:
+
+```git
+- add user dashboard feature
+- fix linting
+- fix tests
+- add more tests
+- remove console.logs
+- cleanup
+```
+
+And here's what a well-structured PR might look like:
+
+```git
+- extract user stats calculation to separate service
+- add database schema for dashboard widgets
+- implement dashboard widget API endpoints + tests
+- add dashboard UI components
+```
 
 ## If it's so good, why don't we always do it?
 
@@ -14,28 +36,24 @@ If clean commits are so obviously beneficial, why aren't our git logs always cle
 
 ## Better code reviews
 
-A clean commit history simplifies reviews of large pull requests. A lot. When commits are well-scoped and logically organized, reviewers can grasp your changes quickly and provide more useful feedback.
+A clean commit history simplifies reviews of large pull requests. A lot. Picture this: a reviewer opens your PR and sees one massive "WIP" commit followed by a series of scattered "fixes" and "improvements." Where do they even begin? They're forced to untangle various unrelated changes, trying to decode a jumble of edits while reasoning about your overall approach.
 
-When each commit is a single conceptual change, reviewers can follow the thinking behind your solution. Consider the difference: A reviewer faced with one large initial WIP commit and several subsequent smaller "fixes" and "improvements" commits has to reason about various unrelated changes. It's hard to know where to begin.
+Now imagine that same reviewer opening a PR with a sequence of focused commits. First, a commit that refactors a specific module to prepare for new functionality. Then a commit that introduces a new data structure. Finally, a commit that adds the new feature, building on the earlier refactoring and data prep. Each step tells a clear story. The reviewer isn't struggling to understand what happened – they're following a coherent narrative of development.
 
-Now, imagine that same set of changes presented as a sequence of focused commits: first, perhaps, a commit that refactors a specific module to prepare for new functionality. Then a commit that introduces a new data structure. Finally, a commit that adds the new feature, building on the earlier refactoring and data prep. Each step is clear. The reviewer isn't struggling to decode a jumble of edits - they're following a coherent story of development.
+This is the power of well-scoped, logically organized commits. When each commit represents a single conceptual change, reviewers can grasp your changes quickly and follow the thinking behind your solution. They spend less time figuring out what changed and more time assessing how well it was done.
 
-_Don't waste your reviewer's time by showing them all your failed experiments_, like an initial commit with failing tests and linting errors. A polished commit history shows the intended path to the final solution. This allows the reviewer to concentrate on the quality and design of that solution, rather than being distracted by the intermediate, sometimes messy, process of its creation.
+_Don't waste your reviewer's time by showing them all your failed experiments._ Skip the initial commits with failing tests and linting errors. A polished commit history shows the intended path to the final solution, allowing the reviewer to concentrate on the quality and design of that solution rather than being distracted by the messy intermediate process.
 
-Good commit messages are crucial here. A concise title is a summary, but the commit description often carries more weight. It should explain the 'why' behind the change. Why was this approach taken? Were other options considered? What are the implications? This context transforms a simple code change from a snapshot in time into a piece of documentation.
+Good commit messages are crucial here. A concise title summarizes the change, but the commit description can carry more weight. For important changes, it should explain the 'why' behind the change. Why was this approach taken? Were other options considered? What are the implications? This context transforms a simple code change from a snapshot in time into a piece of documentation.
 
-Well-structured commits mean reviewers spend less time figuring out what changed and more time assessing how well it was done. Especially in startups, every day counts, and this efficiency boost means faster feedback loops and quicker merges.
+The benefits extend far beyond the immediate review. When reviewers can follow your logical progression step-by-step, they internalize the code better. This makes your solution more memorable – not just for you, but for everyone who touches that code later. This reduces bus factor and makes the code genuinely more maintainable.
 
-_Good commits that explain themselves make it much more likely for you to get a good review!_ Good reviews are the best opportunity to grow as a developer.
+Especially in startups where things move fast, this efficiency boost means faster feedback loops and quicker merges. _Good commits that explain themselves make it much more likely for you to get a good review!_ And good reviews are one of the best opportunities to grow as a developer.
 
 ## Reviewing the whole diff? You're missing out
 
-I used to prefer reviewing all changes in a pull request as one large diff; it felt straightforward and it was a way to avoid seeing the messy evolution of a pull request. That changed when I started seeing large pull requests built from a series of clean commits. The difference was immediate: it was far easier to follow the developer's reasoning, which in turn helped me give better feedback and complete reviews more quickly.
-
-## What about small pull requests?
-
-If your entire pull request addresses one small, logical change, then it makes sense to squash any intermediate "work-in-progress" commits into a single, clear commit before requesting a review. There's little value in making reviewers trace tiny, incremental steps if the outcome is one self-contained update.
+I used to prefer reviewing all changes in a pull request as one large diff; it felt straightforward and it was a way to avoid seeing the messy evolution of a pull request. That changed when I started seeing large pull requests built from a series of clean commits. The difference was obvious: it was far easier to follow the developer's reasoning, which in turn helped me give better feedback and complete reviews more quickly.
 
 ## Clean commits: it's how to move fast
 
-Claiming 'no time' for clean commits is often a false economy. You're not saving time – you're deferring it, with interest, onto your reviewers. Don't just write code, write a narrative.
+Claiming 'no time' for clean commits is often a false economy. You're not saving time – you're deferring it, with interest, onto your reviewers. Your commits should tell the story of your solution, not document your struggle to find it.
