@@ -18,7 +18,7 @@ A clean commit history simplifies reviews of large pull requests. A lot. When co
 
 When each commit is a single conceptual change, reviewers can follow the thinking behind your solution. Consider the difference: A reviewer faced with one large initial WIP commit and several subsequent smaller "fixes" and "improvements" commits has to reason about various unrelated changes. It's hard to know where to begin.
 
-Now, imagine that same set of changes presented as a sequence of focused commits: first, perhaps, a commit that refactors a specific module to prepare for new functionality. Then a commit that introduces a new data structure. Finally, a commit that adds the new feature, building on the earlier refactoring and data prep. Each step is clear. The reviewer isn't struggling to decode a jumble of edits; they're following a coherent story of development.
+Now, imagine that same set of changes presented as a sequence of focused commits: first, perhaps, a commit that refactors a specific module to prepare for new functionality. Then a commit that introduces a new data structure. Finally, a commit that adds the new feature, building on the earlier refactoring and data prep. Each step is clear. The reviewer isn't struggling to decode a jumble of edits - they're following a coherent story of development.
 
 _Don't waste your reviewer's time by showing them all your failed experiments_, like an initial commit with failing tests and linting errors. A polished commit history shows the intended path to the final solution. This allows the reviewer to concentrate on the quality and design of that solution, rather than being distracted by the intermediate, sometimes messy, process of its creation.
 
