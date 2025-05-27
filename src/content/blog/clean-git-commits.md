@@ -13,21 +13,21 @@ I'll write about _how_ to keep your commits clean in an upcoming post.
 To set the stage, here's an example of a PR with messy commits:
 
 ```git
-- add user dashboard feature
-- fix linting
-- fix tests
-- add more tests
-- remove console.logs
-- cleanup
+1: add user dashboard feature
+2: fix linting
+3: fix tests
+4: add more tests
+5: remove console.logs
+6: cleanup
 ```
 
 And here's what a well-structured PR might look like:
 
 ```git
-- extract user stats calculation to separate service
-- add database schema for dashboard widgets
-- implement dashboard widget API endpoints + tests
-- add dashboard UI components
+1: extract user stats calculation to separate service
+2: add database schema for dashboard widgets
+3: implement dashboard widget API endpoints + tests
+4: add dashboard UI components
 ```
 
 ## If it's so good, why don't we always do it?
