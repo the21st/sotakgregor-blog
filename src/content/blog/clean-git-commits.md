@@ -10,7 +10,7 @@ I'll write about _how_ to keep your commits clean in an upcoming post.
 
 ## Examples
 
-To set the stage, here's an example of commits in a clean PR:
+To set the stage, here's an example of a PR with messy commits:
 
 ```git
 - add user dashboard feature
