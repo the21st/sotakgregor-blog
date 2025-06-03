@@ -154,5 +154,12 @@ const posts = (await getCollection("blog")).sort(
         }
       </ul>
     </main>
-  </body>
+  </body><style>
+    .posts-list li {
+      margin-bottom: 1rem;
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+  </style>
 </html>

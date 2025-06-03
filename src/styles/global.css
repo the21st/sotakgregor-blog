@@ -6,6 +6,7 @@
 
 :root {
 	--accent: #2337ff;
+	--card-bg: #f7f7f7; /* Light gray for cards/posts in light mode */
 	--accent-dark: #000d8a;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
@@ -22,6 +23,7 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
+		--card-bg: #23242a; /* Darker gray for cards/posts in dark mode */
 		--accent: #6e7eff;
 		--accent-dark: #7e8dff;
 		--black: 220, 220, 220;
@@ -82,19 +84,22 @@ h6 {
 h1 {
 	font-size: 34px;
 	font-weight: 600;
+	margin-top: 2em;
 }
 h2 {
 	font-size: 28px;
 	font-weight: 600;
-	margin-top: 2em;
+	margin-top: 1.5em;
 }
 h3 {
 	font-size: 22px;
 	font-weight: 600;
+	margin-top: 1em;
 	}
 h4 {
 	font-size: 16px;
 	font-weight: 600;
+	margin-top: 0.5em;
 }
 h5 {
 	font-size: 1.2em;
