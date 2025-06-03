@@ -1,6 +1,6 @@
 ---
 title: "The reviewer-first mindset: clean commits matter"
-description: "The reviewer-first mindset: clean commits matter"
+description: "Why writing well-structured commits is essential for productive code reviews and better teamwork."
 pubDate: "2025-05-07"
 ---
 
