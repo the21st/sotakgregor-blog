@@ -29,4 +29,4 @@ The script will wait until either:
 prwatch --all <PR_URL>
 ```
 
-This option always waits for all checks to finish before sending a notification and terminating.
+With this option, the script waits for all checks to finish before sending a notification and terminating.
