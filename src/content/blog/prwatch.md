@@ -10,6 +10,11 @@ I created a small utility, `prwatch` – a script that takes a PR URL and watche
 
 Download the script from this Gist: https://gist.github.com/the21st/aeab60a5b4fb4e3d763f4a6762009d0f
 
+<blockquote>
+  <span class="note-icon">ℹ️</span>
+  <span class="note-content">The script is written for MacOS system notifications. There are instructions in the code for Linux and Windows but I haven’t tested them.</span>
+</blockquote>
+
 ## Usage
 
 ### Basic usage

@@ -19,6 +19,10 @@
 	--code-bg: rgb(var(--gray-light));
 	--border-color: rgb(var(--gray-light));
 	--box-shadow: 0 2px 6px rgba(var(--gray), 25%);
+	/* Note block (blockquote) variables */
+	--note-bg: #eef6fb;
+	--note-border: #2196f3;
+	--note-icon: #2196f3;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,6 +41,10 @@
 		--code-bg: rgb(var(--gray-light));
 		--border-color: rgb(var(--gray-light));
 		--box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+		/* Note block (blockquote) variables for dark mode */
+		--note-bg: #232f3b;
+		--note-border: #4fa3ff;
+		--note-icon: #4fa3ff;
 	}
 }
 @font-face {
@@ -151,10 +159,16 @@ pre > code {
 	all: unset;
 }
 blockquote {
-	border-left: 4px solid var(--accent);
-	padding: 0 0 0 20px;
-	margin: 0px;
-	font-size: 1.333em;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75em;
+  background: var(--note-bg);
+  border-left: 6px solid var(--note-border);
+  padding: 1em 1em;
+  margin: 1.5em 0;
+  border-radius: 8px;
+  font-size: 1em;
+  color: var(--text-color);
 }
 hr {
 	border: none;
