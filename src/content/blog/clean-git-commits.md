@@ -6,7 +6,7 @@ pubDate: "2025-05-07"
 
 A clean git commit history isn't about neatness or vanity. Clean commits are a tool that leads to better and faster code reviews, and fewer WTF moments when you come back to old PRs. While mastering all the git tricks can take time, here I want to focus on _why_ a clean history within a pull request is so valuable, especially when you're trying to build things quickly.
 
-I'll write about _how_ to keep your commits clean in an upcoming post.
+You can read [part 2](/blog/clean-git-commits-how/) of this series to learn how to keep your commits clean.
 
 ## Examples
 
