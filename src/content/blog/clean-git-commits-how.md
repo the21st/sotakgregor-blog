@@ -54,10 +54,10 @@ What if you spot a mistake in a commit you made three commits ago? That's where 
 
 Let's say you've committed a bunch of clean commits that got a feature done end-to-end. And then you spot a mistake or CI tells you about an issue in a function you added a few commits back. Here’s the workflow:
 
-1.  **Make the fix** in your editor.
-2.  **Create a new, temporary commit.** The message doesn't matter. I often use something like `fixup`.
-3.  Go to the **History tab**.
-4.  **Drag your new `fixup` commit and drop it directly onto the older commit** you want to fix.
+1.  Make the fix in your editor.
+2.  Create a new, temporary commit. The message doesn't matter. I often use something like `fixup`.
+3.  Go to the History tab.
+4.  Drag your new `fixup` commit and drop it directly onto the older commit you want to fix.
 
 GitHub Desktop will ask you to confirm, and then it will squash the two commits together, rewriting the history for you. It's an interactive rebase, but without the command-line.
 
@@ -94,11 +94,11 @@ Before you ask for a review, give your own commit list a quick scan. If you see 
 - Any commit with a message like `"fix lint"`, `"fix tests"`, or `"cleanup"`. These changes should be squashed into the commits that introduced the issue.
 - Commits named `"WIP"`, `"work in progress"`, or `"stuff"`. This is the clearest sign that the history hasn't been tidied up.
 - A commit that refactors or moves code that was just added in a previous commit _in the same PR_. The code should have been committed in its final, refactored state to begin with. Don't show your reviewer your process – show them the polished result.
-- A merge commit. Usually its summary is `Merge branch 'main' into your-feature-branch`. This clutters the history. Instead of merging `main` into your branch, you should **rebase** your branch on top of `main` (`git rebase main`). This creates a clean, linear history that's much easier to follow.
+- A merge commit. Usually its summary is `Merge branch 'main' into your-feature-branch`. This clutters the history. Instead of merging `main` into your branch, you should rebase your branch on top of `main` (`git rebase main`). This creates a clean, linear history that's much easier to follow.
 
 ## The Caveat: Stop Editing History After Review
 
-**Once a human has started reviewing your PR, stop rewriting history.**
+Once a human has started reviewing your PR, stop rewriting history.
 
 All the techniques above involve force-pushing, which rewrites the commit history. If you do this after someone has given you feedback, you'll break GitHub's review UI. Your reviewer won't be able to easily see what you changed in response to their comments, creating a ton of extra work for them. And that's exactly what we're trying to avoid!
 
