@@ -1,109 +1,103 @@
 ---
-title: "How to Craft Clean Commits: A Practical Guide"
+title: "How to craft clean commits: a practical guide"
 description: "A guide to clean PR commits without losing sanity."
 pubDate: "2025-09-16"
 ---
 
-In the [first part of this series](/blog/clean-git-commits/), I talked about _why_ a clean commit history is important for faster, better code reviews. It’s about putting the reviewer first and telling a clear story with your code.
+In the [first part of this series](/blog/clean-git-commits/), I covered _why_ a clean commit history matters. Short version: it's about putting the reviewer first and telling a clear story with your code.
 
-Now, let's get into the _how_.
+Now for the _how_.
 
-I initially thought that editing git history means a lot of tedious command-line `git` magic. And you _could_ do all of this with `git rebase -i`. But I don't. Good tools are essential, and they can make this process fast and easy.
+I used to think editing git history meant a lot of tedious command-line `git` magic. You _could_ do all of this with `git rebase -i`. But I don't. Good tools sand down the rough edges and make the whole process fast.
 
-I primarily use two tools to keep my commit history clean: **GitHub Desktop** for 90% of my daily work and **GitUp** for the trickier situations.
+I use 2 tools: **GitHub Desktop** for 90% of my daily work and **GitUp** for the trickier situations.
 
-## The Everyday Workflow in GitHub Desktop
+## The everyday workflow: GitHub Desktop
 
-The hill I'll die on is that GUI is always better than CLI.
+GUI is always better than CLI for git. I will die on this hill.
 
-That's why I use a GUI app to do most of my git work. GitHub Desktop is my go-to for most of the committing process. It's simple, and it handles the most frequent tasks well.
+GitHub Desktop is my go-to for most of the committing process. It's simple, it handles the most common tasks well, and it's separate from my IDE. That last part matters. Switching to GitHub Desktop shifts my mindset from writer to reviewer. It's a mental trick: as I work on my commits, I review my own code. That self-review adds a layer of quality you don't get from going straight to `git commit`.
 
-The fact that Github Desktop is separate from my IDE works to my advantage. Switching to Github Desktop changes my mindset from writer to reviewer. It's a mental trick. So as I work on my commits in Github Desktop, I review my own code. This adds a layer of quality you wouldn't get if you just went straight to `git commit`.
+### Staging changes line by line
 
-### The Most Important Tool: Staging Changes Line-by-line
+This is the foundation. I rarely make a set of changes that all belong in a single, logical commit. More often, I'll fix something in one place while bolting on a feature in another.
 
-This is the foundation. Very rarely do I make a set of changes that all belong in a single, logical commit. More often, I'll fix something in one place while adding a feature in another. Instead of committing the whole file, I commit only the specific lines that belong together.
+Instead of committing the whole file, I commit only the specific lines that belong together. In GitHub Desktop, you can uncheck entire files or specific lines you don't want to include.
 
-In GitHub Desktop, you can see all your file changes. You can uncheck entire files but also specific lines that you don't want to include.
-
-This lets you stage and commit just the `add_new_feature()` function, leaving the unrelated change in `some_other_function()` to be committed separately.
+So you stage and commit just the `add_new_feature()` function, leaving the unrelated change in `some_other_function()` for a separate commit.
 
 <video controls autoplay muted loop playsinline style="max-width: 100%; border-radius: 8px;" aria-label="Demo of selecting and deselecting lines for a partial commit in GitHub Desktop">
   <source src="/assets/github-desktop-stage-lines.mp4" type="video/mp4" />
 </video>
 
-Using this will already improve your commits. You start building your PR piece by piece, with each commit telling one part of the story.
+This alone will improve your commits. You start building your PR piece by piece, each commit telling one part of the story.
 
-### Quick Fixes: Amending the Last Commit
+### Quick fixes: amending the last commit
 
-You just pushed a commit, and the CI fails because of linting violations. Or you notice a typo in a code comment you just committed.
+You just pushed a commit and CI fails on linting. Or you spot a typo in a comment you just committed.
 
-Don't create a new commit that says `"fix lint"`. Your reviewer doesn't need to see that mistake. Edit the commit instead.
+Don't create a new commit that says `"fix lint"`. Your reviewer doesn't need to see that. Edit the commit instead.
 
-Make the change, go to the "History" tab in GitHub Desktop, right-click your last commit, and choose "Amend Commit." Your new changes will be rolled into the previous commit as if you'd never made the mistake.
+Make the change, go to the "History" tab, right-click your last commit, and choose "Amend Commit." Your fix gets folded into the previous commit as if the mistake never happened.
 
 <video controls autoplay muted loop playsinline style="max-width: 100%; border-radius: 8px;" aria-label="Demo of amending a  commit in GitHub Desktop">
   <source src="/assets/github-desktop-amend.mp4" type="video/mp4" />
 </video>
 
-You can only do this for the _most recent_ commit, but it's perfect for quick fixes of small mistakes.
+This only works for the _most recent_ commit, but it's perfect for small mistakes.
 
-### Fixing Older Commits
+### Fixing older commits
 
-What if you spot a mistake in a commit you made three commits ago? That's where this killer GitHub Desktop feature comes in.
+What if you spot a mistake in a commit from 3 commits ago? That's where this killer GitHub Desktop feature comes in.
 
-Let's say you've committed a bunch of clean commits that got a feature done end-to-end. And then you spot a mistake or CI tells you about an issue in a function you added a few commits back. Here’s the workflow:
+Say you've committed a bunch of clean commits that got a feature done end to end. Then you spot a bug (or CI spots it for you) in a function you added a few commits back. Here's the workflow:
 
 1.  Make the fix in your editor.
-2.  Create a new, temporary commit. The message doesn't matter. I often use something like `fixup`.
+2.  Create a new, temporary commit. The message doesn't matter. I usually just write `fixup`.
 3.  Go to the History tab.
-4.  Drag your new `fixup` commit and drop it directly onto the older commit you want to fix.
+4.  Drag your `fixup` commit and drop it onto the older commit you want to fix.
 
-GitHub Desktop will ask you to confirm, and then it will squash the two commits together, rewriting the history for you. It's an interactive rebase, but without the command-line.
+GitHub Desktop squashes the 2 commits together, rewriting the history for you. It's an interactive rebase without the command line.
 
 <video controls autoplay muted loop playsinline style="max-width: 100%; border-radius: 8px;" aria-label="Demo of squashing 2 commitsin GitHub Desktop">
   <source src="/assets/github-desktop-squash.mp4" type="video/mp4" />
 </video>
 
-If the changes in your `fixup` commits conflict with one of the newer commits, you'll need to resolve the conflicts before you can continue. Don't worry – Github Desktop will tell you when there are conflicts and will wait for you to resolve them.
+If the changes conflict with a newer commit, you'll need to resolve the conflicts first. GitHub Desktop will tell you when that happens and wait for you to sort it out.
 
-After you amend or reorder commits, you'll need to force-push your changes. GitHub Desktop has a "Force Push Origin" button that makes this easy. I also recommend using `git push --force-with-lease` from the command line, as it's a safer way to force-push.
+After you amend or reorder commits, you'll need to force-push. GitHub Desktop has a "Force Push Origin" button for this. I also recommend `git push --force-with-lease` from the command line, which is a safer alternative.
 
-## For Heavy-Duty Work: Splitting Commits with GitUp
+## Splitting commits with GitUp
 
-Sometimes a commit contains two or more distinct ideas. For example, you add a new test for a function, but in the same commit, you also fix a typo in the README. These should be separate.
+Sometimes a commit has 2 distinct ideas crammed together. You added a new test for a function, but you also fixed a typo in the README in the same commit. These should be separate.
 
-While you _can_ do this with `git rebase`, GitUp makes it much more intuitive.
+You _can_ do this with `git rebase`, but GitUp makes it much more intuitive:
 
-1.  Open your repo in GitUp. It shows you a visual graph of your commits.
+1.  Open your repo in GitUp. It shows a visual graph of your commits.
 2.  Find the commit you want to split.
-3.  Right-click on it and choose "Split".
-4.  GitUp will show you a diff. You can select the changes (or even individual lines) that you want to move into a _new_ commit.
-5.  Give your new commit a clear message.
+3.  Right-click and choose "Split."
+4.  GitUp shows you the diff. Select the changes (or individual lines) you want to carve out into a _new_ commit.
+5.  Give the new commit a clear message.
 
-And then, don't forget to force push. That's it!
+Then force push. That's it.
 
 <video controls autoplay muted loop playsinline style="max-width: 100%; border-radius: 8px;" aria-label="Demo of splitting a commit in GitUp">
   <source src="/assets/gitup-split-commit.mp4" type="video/mp4" />
 </video>
 
-## Red Flags: How to Spot a "Dirty" PR
+## Red flags: how to spot a dirty PR
 
-Before you ask for a review, give your own commit list a quick scan. If you see any of the following, it’s a sign that you should do some cleanup first.
+Before you ask for a review, scan your commit list. If you see any of these, clean up first:
 
-- Any commit with a message like `"fix lint"`, `"fix tests"`, or `"cleanup"`. These changes should be squashed into the commits that introduced the issue.
-- Commits named `"WIP"`, `"work in progress"`, or `"stuff"`. This is the clearest sign that the history hasn't been tidied up.
-- A commit that refactors or moves code that was just added in a previous commit _in the same PR_. The code should have been committed in its final, refactored state to begin with. Don't show your reviewer your process – show them the polished result.
-- A merge commit. Usually its summary is `Merge branch 'main' into your-feature-branch`. This clutters the history. Instead of merging `main` into your branch, you should rebase your branch on top of `main` (`git rebase main`). This creates a clean, linear history that's much easier to follow.
+- **`"fix lint"`, `"fix tests"`, `"cleanup"`** commits. Squash these into the commits that introduced the issue.
+- **`"WIP"`, `"work in progress"`, `"stuff"`** commits. The clearest sign the history hasn't been tidied up.
+- **A commit that refactors code added in a previous commit** _in the same PR_. The code should've been committed in its final state. Don't show your reviewer your process; show them the result.
+- **A merge commit** like `Merge branch 'main' into your-feature-branch`. This clutters the history. Rebase your branch on top of `main` instead (`git rebase main`) for a clean, linear history.
 
-## The Caveat: Stop Editing History After Review
+## Stop editing history after review
 
-Once a human has started reviewing your PR, stop rewriting history.
+Once someone has started reviewing your PR, stop rewriting history.
 
-All the techniques above involve force-pushing, which rewrites the commit history. If you do this after someone has given you feedback, you'll break GitHub's review UI. Your reviewer won't be able to easily see what you changed in response to their comments, creating a ton of extra work for them. And that's exactly what we're trying to avoid!
+All these techniques involve force-pushing. If you do this after someone has given feedback, you'll break GitHub's review UI. Your reviewer won't be able to see what you changed in response to their comments, which creates a ton of extra work for them (exactly what we're trying to avoid).
 
-After you get that first review, switch to adding new commits on top to address the feedback. You can still keep _those_ new commits clean, but don't touch the ones that have already been reviewed.
-
----
-
-It takes a little practice, but crafting clean commits quickly becomes a habit. It's a small investment of your time that has a huge payoff in the speed and quality of your code reviews. Give it a try!
+After you get that first review, switch to adding new commits on top. You can still keep _those_ commits clean, but don't touch the ones that have already been reviewed.
