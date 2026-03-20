@@ -89,6 +89,33 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         border-top: 1px solid #444;
         margin: 2rem 0 2rem 0;
       }
+      :global(h1, h2, h3, h4, h5, h6) {
+        position: relative;
+      }
+      :global(.anchor-link) {
+        opacity: 0;
+        position: absolute;
+        right: 100%;
+        bottom: 2px;
+        padding-right: 0.25em;
+        font-size: 0.7em;
+        text-decoration: none !important;
+        color: #888;
+        font-weight: 400;
+        transition: opacity 0.2s;
+      }
+      :global(.anchor-link:hover) {
+        color: var(--accent);
+      }
+      :global(h1:hover .anchor-link),
+      :global(h2:hover .anchor-link),
+      :global(h3:hover .anchor-link),
+      :global(h4:hover .anchor-link),
+      :global(h5:hover .anchor-link),
+      :global(h6:hover .anchor-link),
+      :global(.anchor-link:focus) {
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
